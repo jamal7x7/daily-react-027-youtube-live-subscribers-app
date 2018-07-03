@@ -9,16 +9,22 @@ const Header = () => (
 
 const Items = (props) => (
   <div className=' statistics '>
+    <div className="banner-img">
+      <img src={props.bannerUrl} alt=""/>
+    </div>
     <div className='subscribers'>
+      {props.subscribers}
+    </div>
+    <div className="avatar-img">
+      <img src={props.avatarUrl} alt=""/>
+    </div>
 
-        {props.subscribers}
 
-      </div>
   </div>
 )
 
 const Menu = () => (
-  <div className='study-plan'>
+  <div className='side-bar'>
     <div className='svg-input-wrap'>
 
       Menu
@@ -37,7 +43,7 @@ class StickersStoreApp extends Component {
      
     const channelId = 'UCBJycsmduvYEL83R_U4JriQ'
     const key = 'AIzaSyAMZtznI7RBhaybdk-ZJSxpr0F0qMZEglM'
-    const url = 'https://www.googleapis.com/youtube/v3/channels?key=' + key + '&id=' + channelId + '&part=snippet%2C+contentDetails%2C+statistics'
+    const url = 'https://www.googleapis.com/youtube/v3/channels?key=' + key + '&id=' + channelId + '&part=brandingSettings%2C+snippet%2C+contentDetails%2C+statistics'
     
     console.log(url)
     //const url2 = "https://randomuser.me/api/";
@@ -47,7 +53,11 @@ class StickersStoreApp extends Component {
         .then(res =>  res.json())
         .then(data => {
   
-            this.setState((prevState) => ({subscribers: data.items[0].statistics.subscriberCount}))
+            this.setState((prevState) => ({
+              subscribers: data.items[0].statistics.subscriberCount,
+              bannerUrl: data.items[0].brandingSettings.image.bannerImageUrl,
+              avatarUrl: data.items[0].snippet.thumbnails.default.url
+            }))
             console.log(this.state.subscribers)
   
           })
@@ -63,10 +73,14 @@ class StickersStoreApp extends Component {
   render () {
     return (
       <div 
-      className='flash-cards-con'>
+      className='subscribers-con'>
 
         <Menu />
-        <Items subscribers={this.state.subscribers}/>
+        <Items 
+          subscribers={this.state.subscribers}
+          bannerUrl={this.state.bannerUrl}
+          avatarUrl={this.state.avatarUrl}
+        />
 
       </div>
     )
