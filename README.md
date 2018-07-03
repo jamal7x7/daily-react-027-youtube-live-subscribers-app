@@ -1,6 +1,6 @@
 ## Daily-react-027-youtube-live-subscribers-app
 
-> Challenge: create an app to show live  subscribers count for Youtube a channel.
+> Challenge: create an app to show live  subscribers count for a Youtube channel.
 
 My ongoing submission: https://github.com/jamal7x7/daily-react-027-youtube-live-subscribers-app
 
