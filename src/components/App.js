@@ -42,7 +42,7 @@ class StickersStoreApp extends Component {
   componentDidMount() {
      
     const channelId = 'UCBJycsmduvYEL83R_U4JriQ'
-    const key = 'AIzaSyAMZtznI7RBhaybdk-ZJSxpr0F0qMZEglM'
+    const key = YOUR_API_KEY
     const url = 'https://www.googleapis.com/youtube/v3/channels?key=' + key + '&id=' + channelId + '&part=brandingSettings%2C+snippet%2C+contentDetails%2C+statistics'
     
     console.log(url)
